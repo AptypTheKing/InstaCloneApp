@@ -1,7 +1,7 @@
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { useState } from 'react'
-import { ActivityIndicator, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View, Text } from 'react-native'
 import Animated, { interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import PostPreview from './PostPreview'
 import UserTopHeader from './UserTopHeader'
@@ -50,18 +50,18 @@ const UserPost = ({ props }) => {
       stickyHeaderIndices={[0]}
       ListHeaderComponent={stickyHead}
       ListFooterComponent={() => 
-          props.page == 4
+          props.page == 3
           ? <></>
           : <ActivityIndicator size={24} color='blue' />
       }
-      ListFooterComponentStyle={{margin: props.page == 4 ? 0 : 10}}
+      ListFooterComponentStyle={{margin: props.page == 3 ? 0 : 10}}
       onScroll={scrollHandler}
       numColumns={3}
       data={props.photo}
       renderItem={renderFlatList}
       keyExtractor={(item) => item.id}
       onEndReachedThreshold={0.1}
-      onEndReached={props.fetchMoreData}
+      onEndReached={props.nextPage}
       /> 
     
 )}

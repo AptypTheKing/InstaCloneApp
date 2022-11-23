@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import UserPost from './UserPost'
 
@@ -7,15 +7,7 @@ const User = ({ navigation, route }) => {
 
   const [page, setPage] = useState(1)
 
-  const[isRefreshing, setIsRefreshing] = useState(false)
-
-  const fetchMoreData = async () => {
-    if(page === 4) return 
-    let responseMoreData = await axios.get(`https://jsonplaceholder.typicode.com/albums/${page}/photos`)
-    setPhoto((list) => [...list, ...responseMoreData.data])
-    setPage(page + 1)
-    console.log('fetching')
-  }
+  const [isRefreshing, setIsRefreshing] = useState(false)
 
   const [post, setPost] = useState([])
   const [photo, setPhoto] = useState([])
@@ -30,7 +22,6 @@ const fetchData = async () => {
     setPost(responsePost.data)
     setPhoto(responsePhoto.data)
     setUser(responseUser.data)
-    setPage(page + 1)
   } catch (e) {
     alert(e)
   } finally {
@@ -38,12 +29,37 @@ const fetchData = async () => {
   }
 }
   
-const dataRefresh = async () => {
-  setIsRefreshing(true)
-  await fetchData()
-  setIsRefreshing(false)
+  const fetchMoreData = async () => {
+  let responseMoreData = await axios.get(`https://jsonplaceholder.typicode.com/albums/${page}/photos`)
+  setPhoto((photos) => [...photos, ...responseMoreData.data])
+  console.log('fetchingMoreData')
 }
-    
+  
+  const dataRefresh = () => {
+    setPage(1)
+    setIsRefreshing(true)
+  }
+
+  const nextPage = () => {
+    if (page == 3) {
+      return
+    } else {
+      setPage(page + 1)
+    }
+  }
+
+
+  useEffect(() => {
+    if (page == 1) {
+      if (isRefreshing) {
+        fetchData()
+        setIsRefreshing(false)
+      }
+    } else {
+      fetchMoreData()
+    }
+  }, [page, isRefreshing])
+
   useEffect(() => {
     fetchData()
   }, [])
@@ -52,7 +68,7 @@ const dataRefresh = async () => {
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}> 
       {isLoading
         ? <ActivityIndicator size='large' color='blue'/>
-        : <UserPost props={{ post, photo, user, fetchMoreData, page, route, navigation, dataRefresh, isRefreshing}} />
+        : <UserPost props={{ post, photo, user, page, route, navigation, dataRefresh, isRefreshing, nextPage}} />
       }  
       </View>
   )

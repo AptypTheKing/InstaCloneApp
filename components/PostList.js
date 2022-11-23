@@ -30,10 +30,10 @@ const PostList = ({ navigation, route }) => {
         axios.get('https://jsonplaceholder.typicode.com/posts'),
         axios.get(`https://jsonplaceholder.typicode.com/album/${page}/photos`)
       ])
-      setPage(page == 1 ? page + 1 : 1)
       setUser(responseUser.data)
       setPost(responsePost.data)
       setPhoto(responsePhoto.data)
+      setPage(page + 1)
     } catch (e) {
       console.log(e)
     } finally {

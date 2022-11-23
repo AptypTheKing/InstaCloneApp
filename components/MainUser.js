@@ -26,7 +26,6 @@ const MainUser = ({navigation, route}) => {
       setPost(responsePost.data)
       setPhoto(responsePhoto.data)
       setUser(responseUser.data)
-      setPage(page + 1)
     } catch (e) {
       alert(e)
     } finally {
@@ -35,18 +34,34 @@ const MainUser = ({navigation, route}) => {
   }
 
   const fetchMoreData = async () => {
-    if (page === 4) return
     const responseMoreData = await axios.get(`https://jsonplaceholder.typicode.com/albums/${page}/photos`)
     setPhoto((list) => [...list, ...responseMoreData.data])
-    setPage(page + 1)
     console.log('fetching')
   }
 
-  const dataRefresh = async () => {
+  const dataRefresh = () => {
+    setPage(1)
     setIsRefreshing(true)
-    await fetchData()
-    setIsRefreshing(false)
   }
+
+  const nextPage = () => {
+    if (page == 3) {
+      return
+    } else {
+      setPage(page + 1)
+    }
+  }
+
+  useEffect(() => {
+    if (page == 1) {
+      if (isRefreshing) {
+        fetchData()
+        setIsRefreshing(false)
+      }
+    } else {
+      fetchMoreData()
+    }
+  }, [page, isRefreshing])
 
   useEffect(() => {
     passUser()
@@ -60,7 +75,7 @@ const MainUser = ({navigation, route}) => {
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}> 
       {isLoading
         ? <ActivityIndicator size='large' color='blue'/>
-        : <UserPost props={{ post, photo, user, fetchMoreData, page, navigation, route, dataRefresh, isRefreshing }}/>
+        : <UserPost props={{ post, photo, user, page, navigation, route, dataRefresh, isRefreshing, nextPage }}/>
       }  
       </View>
   )
