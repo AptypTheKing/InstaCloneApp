@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import { FlatList, Image, StyleSheet, View, Text, ActivityIndicator } from 'react-native'
+import React from 'react'
+import { FlatList, StyleSheet, View } from 'react-native'
 import StoriePreview from './StoriePreview'
 
 const Stories = (props) => {

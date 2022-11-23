@@ -21,6 +21,7 @@ const PostList = ({ navigation, route }) => {
   const [user, setUser] = useState([])
   const [page, setPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
+  const [isRefreshing, setIsRefreshing] = useState(false)
   
   const fetchData = async () => {
     try {
@@ -29,7 +30,7 @@ const PostList = ({ navigation, route }) => {
         axios.get('https://jsonplaceholder.typicode.com/posts'),
         axios.get(`https://jsonplaceholder.typicode.com/album/${page}/photos`)
       ])
-      setPage(page + 1)
+      setPage(page == 1 ? page + 1 : 1)
       setUser(responseUser.data)
       setPost(responsePost.data)
       setPhoto(responsePhoto.data)
@@ -48,6 +49,12 @@ const PostList = ({ navigation, route }) => {
     console.log('fetching')
   }
 
+  const dataRefresh = async () => {
+    setIsRefreshing(true)
+    await fetchData()
+    setIsRefreshing(false)
+  }
+
   useEffect(() => {
     fetchData()
   }, [])
@@ -57,6 +64,8 @@ const PostList = ({ navigation, route }) => {
       {isLoading
         ? null
         : <FlatList
+        onRefresh={dataRefresh}
+        refreshing={isRefreshing}  
         onEndReached={fetchMoreData}
         onEndReachedThreshold={0.2}
         keyExtractor={(item) => item.id}

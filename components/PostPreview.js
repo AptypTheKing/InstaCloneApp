@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
-import { Image, StyleSheet, View } from 'react-native'
-import { Pressable } from 'react-native'
+import { Image, Pressable, StyleSheet } from 'react-native'
 
 const PostPreview = (props) => {
   return (

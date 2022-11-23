@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import User from '../User'
-import HeaderMain from '../Headers/HeaderMain'
-import HeaderMainUser from '../Headers/HeaderMainUser'
-import PostList from '../PostList'
-import HeaderUser from '../Headers/HeaderUser'
+import React from 'react'
+import { StyleSheet } from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
+import HeaderMain from '../Headers/HeaderMain'
+import HeaderUser from '../Headers/HeaderUser'
 import Post from '../Post'
+import PostList from '../PostList'
+import User from '../User'
 
 const Stack = createNativeStackNavigator()
 

@@ -1,15 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import MainUser from './MainUser'
+import { NavigationContainer } from '@react-navigation/native'
+import React from 'react'
+import { StyleSheet } from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import Navbar from './Navbar'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MainStack from './Stacks/MainStack'
 import UserStack from './Stacks/UserStack'
-import SplashScreen from 'react-native-splash-screen'
 
 const Tab = createBottomTabNavigator()
 
