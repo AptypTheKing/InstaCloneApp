@@ -1,4 +1,4 @@
-# InstaClone App
+# InstaClone App <img src='ios/assets/examples/icon.png' width='20'>
 
 Instagram Clone mobile application created with React-Native
 
@@ -15,6 +15,10 @@ All FAKE data's coming from
 [{JSON} Placeholder](https://jsonplaceholder.typicode.com)
 
 ## Visuals
+<p>
+  <img src='ios/assets/examples/start.gif' width='200'> &nbsp <img src='ios/assets/examples/likes.gif' width='200'> &nbsp <img src='ios/assets/examples/refresh.gif' width='200'> &nbsp <img src='ios/assets/examples/navigation.gif' width='200'> 
+</p>
+
 
 ## Usage
 
