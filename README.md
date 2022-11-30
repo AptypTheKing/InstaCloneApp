@@ -16,7 +16,7 @@ All FAKE data's coming from
 
 ## Visuals
 <p>
-  <img src='ios/assets/examples/start.gif' width='200'> &nbsp <img src='ios/assets/examples/likes.gif' width='200'> &nbsp <img src='ios/assets/examples/refresh.gif' width='200'> &nbsp <img src='ios/assets/examples/navigation.gif' width='200'> 
+  <img src='ios/assets/examples/start.gif' width='180'> &nbsp <img src='ios/assets/examples/likes.gif' width='180'> &nbsp <img src='ios/assets/examples/refresh.gif' width='180'> &nbsp <img src='ios/assets/examples/navigation.gif' width='180'> 
 </p>
 
 
