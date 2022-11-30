@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, View } from 'react-native'
 import Post from './Post'
 import Stories from './Stories'
 
@@ -64,8 +64,11 @@ const PostList = ({ navigation, route }) => {
       {isLoading
         ? null
         : <FlatList
-        onRefresh={dataRefresh}
-        refreshing={isRefreshing}  
+        refreshControl={<RefreshControl
+          onRefresh={dataRefresh}
+          refreshing={isRefreshing}
+          tintColor={'blue'}  
+        />}  
         onEndReached={fetchMoreData}
         onEndReachedThreshold={0.2}
         keyExtractor={(item) => item.id}

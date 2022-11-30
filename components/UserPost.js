@@ -1,10 +1,10 @@
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import React, { useState } from 'react'
-import { ActivityIndicator, StyleSheet, View, Text } from 'react-native'
+import { ActivityIndicator, StyleSheet, View, Text, RefreshControl } from 'react-native'
 import Animated, { interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import PostPreview from './PostPreview'
-import UserTopHeader from './UserTopHeader'
+import UserTopHeader from './Headers/UserTopHeader'
 
 
 
@@ -45,8 +45,11 @@ const UserPost = ({ props }) => {
   }
   return (
     <Animated.FlatList
-      refreshing={props.isRefreshing}
-      onRefresh={props.dataRefresh}
+      refreshControl={<RefreshControl
+          onRefresh={props.dataRefresh}
+          refreshing={props.isRefreshing}
+          tintColor={'blue'}  
+        />}
       stickyHeaderIndices={[0]}
       ListHeaderComponent={stickyHead}
       ListFooterComponent={() => 

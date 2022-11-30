@@ -53,7 +53,7 @@ const fetchData = async () => {
     if (page == 1) {
       if (isRefreshing) {
         fetchData()
-        setIsRefreshing(false)
+        setTimeout(() => setIsRefreshing(false), 500)
       }
     } else {
       fetchMoreData()

@@ -44,7 +44,7 @@ const Post = (props) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <Image source={{uri: route ? route.photo.url : props.photo.url}} style={{ width: 400, height: 400}} />
+      <Image source={{uri: route ? route.photo.url : props.photo.url}} style={{ width: '100%', height: 400,}} />
         <View>
           <View style={styles.iconsBelowPost}>
           <View style={styles.iconsLeft}>

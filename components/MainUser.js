@@ -39,7 +39,7 @@ const MainUser = ({navigation, route}) => {
     console.log('fetching')
   }
 
-  const dataRefresh = () => {
+  const dataRefresh = async () => {
     setPage(1)
     setIsRefreshing(true)
   }
@@ -56,7 +56,7 @@ const MainUser = ({navigation, route}) => {
     if (page == 1) {
       if (isRefreshing) {
         fetchData()
-        setIsRefreshing(false)
+        setTimeout(() => setIsRefreshing(false), 500)
       }
     } else {
       fetchMoreData()
