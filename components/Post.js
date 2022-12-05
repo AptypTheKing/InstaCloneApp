@@ -27,6 +27,15 @@ const Post = (props) => {
   const navigationState = props.navigation.getState()
   const firstRoute = navigationState.routeNames[0]
 
+  const likePost = () => {
+    {isLiked 
+      ? (setIsLiked((isLiked) => !isLiked),
+        setLikes((likes) => likes - 1))
+      : (setIsLiked((isLiked) => !isLiked),
+        setLikes((likes) => likes + 1))
+      }
+  }
+
   return (
     <View>
       <View style={styles.postHeader}>
@@ -49,14 +58,7 @@ const Post = (props) => {
           <View style={styles.iconsBelowPost}>
           <View style={styles.iconsLeft}>
             <TouchableWithoutFeedback
-              onPress={() => 
-                {isLiked 
-                ? (setIsLiked((isLiked) => !isLiked),
-                  setLikes((likes) => likes - 1))
-                : (setIsLiked((isLiked) => !isLiked),
-                  setLikes((likes) => likes + 1))
-                }
-              }>
+              onPress={likePost}>
               <View>
                 <AntDesign
                 name={isLiked ? "heart" : 'hearto'}

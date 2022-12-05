@@ -23,7 +23,7 @@ const TabsBottom = () => {
         <Tab.Screen
           name='MainStack'
           component={MainStack} 
-          options={{tabBarIcon: ({focused}) => (<Ionicons name={focused ? 'ios-home-sharp' : 'ios-home-outline'} size={28} />)}}
+          options={{tabBarIcon: ({focused}) => <Ionicons name={focused ? 'ios-home-sharp' : 'ios-home-outline'} size={28} />}}
         />
         <Tab.Screen name='Search' component={EmptyTab} options={{tabBarIcon: ({focused}) => <Ionicons name={focused ? 'ios-search-sharp' : 'ios-search-outline'} size={28}/>}} />
         <Tab.Screen name='Reels' component={EmptyTab} options={{tabBarIcon: ({focused}) => <AntDesign name={focused ? 'play' : 'playcircleo'} size={28}/>}}/>
